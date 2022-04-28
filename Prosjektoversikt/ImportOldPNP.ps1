@@ -1,0 +1,2 @@
+﻿Import-Module "$PSScriptRoot\SharePointPnPPowerShellOnline\SharePointPnPPowerShellOnline.psd1" -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
+    return (Get-Command Connect-PnPOnline).Version

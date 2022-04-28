@@ -4,12 +4,14 @@ Param(
     [Parameter(Mandatory = $false, HelpMessage = "N/A")]
     [string]$AppCatalogUrl
 )
+ Import-Module "$PSScriptRoot\SharePointPnPPowerShellOnline\SharePointPnPPowerShellOnline.psd1" -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
 
 if ($AppCatalogUrl) {
     Connect-PnPOnline -Url $Url -UseWebLogin
     Add-PnPApp -Path .\sharepoint\solution\pp-addons-prosjektoversikt.sppkg -Scope Tenant -Publish -Overwrite -SkipFeatureDeployment -ErrorAction Stop >$null 2>&1
 }
 else {
+   
     Connect-PnPOnline -Url $Url -UseWebLogin
     Apply-PnPProvisioningTemplate -Path .\template.xml
 }
